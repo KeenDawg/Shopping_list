@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http,Response,Headers} from '@angular/common/http';
+import {Http,Response,Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable({
@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 })
 export class DataService {
 
-  constructor(private http: http) { }
+  constructor(private http: Http) { }
 
   getShoppingItems(){
     return this.http.get('http://localhost:3000/api/items')
