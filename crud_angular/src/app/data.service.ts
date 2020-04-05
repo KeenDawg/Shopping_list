@@ -21,4 +21,8 @@ export class DataService {
     .map( res=> res.json());
   }
 
+  deleteShoppingItem(id){
+    return this.http.delete("http://localhost:3000/api/item/" +id)
+  }
+
 }
