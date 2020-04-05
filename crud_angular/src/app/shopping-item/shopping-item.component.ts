@@ -23,6 +23,10 @@ constructor(private dataService: DataService) { }
     });
   }
 
+  addItem(form){
+    console.log(form.value);
+
+  }
 
   ngOnInit(): void {
     this.getItems();
