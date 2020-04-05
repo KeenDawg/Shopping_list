@@ -12,6 +12,7 @@ export class ShoppingItemComponent implements OnInit {
   shoppingItemList:Item[]=[];
   selectedItem: Item;
   toggleForm: boolean = false;
+
 constructor(private dataService: DataService) { }
 
 //gets item name data from database at index 0
@@ -57,11 +58,28 @@ constructor(private dataService: DataService) { }
     })
   }
 
+  editItem(form){
+
+    let newItem: Item ={
+      _id: this.selectedItem._id,
+      itemName: form.value.itemName,
+      itemQuantity: form.value.itemQuantity,
+      itemBought: this.selectedItem.itemBought
+    }
+
+    this.dataService.updateShoppingItem(newItem)
+    .subscribe(result => {
+      console.log("original item to be updated with old values: " +result);
+      this.getItems();
+
+    })
+
+  }
 
   showEditForm(item){
 
     this.selectedItem = item;
-
+    this.toggleForm = !this.toggleForm;
   }
   ngOnInit(): void {
     this.getItems();

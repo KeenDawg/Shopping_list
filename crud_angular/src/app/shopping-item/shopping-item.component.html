@@ -1,6 +1,6 @@
 <!-- Form for user input to add items to list -->
 
-<form #frm = "ngForm" (ngSubmit)="addItem(frm)">
+<form #frm = "ngForm" (ngSubmit)="addItem(frm)" *ngIf ="!toggleForm">
   <h2>Add Item</h2>
   <div class="form-group">
     <label for="">
@@ -30,7 +30,7 @@
 
 <!-- form to edit items -->
 
-<form #editfrm = "ngForm" (ngSubmit)="editItem(editfrm)">
+<form #editfrm = "ngForm" (ngSubmit)="editItem(editfrm)" *ngIf ="toggleForm">
   <h2>Edit Item</h2>
   <div class="form-group">
     <label for="">
@@ -41,7 +41,7 @@
       class="form-control"
       name="itemName"
       value=""
-      ngModel>
+      [ngModel]="selectedItem.itemName">
   </div>
   <div class="form-group">
     <label for="">
@@ -52,9 +52,9 @@
       class="form-control"
       name="itemQuantity"
       value=""
-      ngModel>
+      [ngModel]="selectedItem.itemQuantity">
   </div>
-  <button type="submit" name="button" class="btn btn-success">Edit Item</button>
+  <button type="submit" name="button" class="btn btn-success">Save</button>
 
 </form>
 
@@ -81,7 +81,7 @@
 <!--buttons for editing and deleting selected list item(s)-->
 
     <div class="col-md-3">
-      <button type="button" name="editButton" class="btn btn-primary" (click)="showEditForm(item)">Edit</button>
+      <button type="button" name="editButton" class="btn btn-primary" (click)="showEditForm(item)" [disabled]="toggleForm">Edit</button>
     </div>
 
     <div class="col-md-3">
