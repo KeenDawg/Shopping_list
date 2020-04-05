@@ -69,17 +69,29 @@ constructor(private dataService: DataService) { }
 
     this.dataService.updateShoppingItem(newItem)
     .subscribe(result => {
-      console.log("original item to be updated with old values: " +result);
+      console.log("original item to be updated from old value of: " +result.itemQuantity);
       this.getItems();
 
-    })
-
+    });
+    this.toggleForm = !this.toggleForm;
   }
 
   showEditForm(item){
 
     this.selectedItem = item;
     this.toggleForm = !this.toggleForm;
+  }
+
+  updateItemCheckbox(item){
+
+    item.itemBought = !item.itemBought;
+    this.dataService.updateShoppingItem(item)
+    .subscribe(result => {
+      console.log("original checkbox value of: " +result.itemBought);
+      this.getItems();
+
+    });
+
   }
   ngOnInit(): void {
     this.getItems();
