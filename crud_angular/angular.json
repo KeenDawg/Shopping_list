@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/my-first-app",
+            "outputPath": "../crud_backend/public",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -124,6 +124,6 @@
   },
   "defaultProject": "my-first-app",
   "cli": {
-    "analytics": "6155c8da-f3f7-40a1-9a73-f7bce12b3e37"
+    "analytics": "c2af020e-91bd-4837-ab8f-71562d03b73d"
   }
 }
