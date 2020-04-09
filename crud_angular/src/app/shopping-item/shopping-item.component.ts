@@ -31,6 +31,8 @@ constructor(private dataService: DataService) { }
       itemQuantity: form.value.itemQuantity,
       itemBought: false
     }
+    this.toggleForm = !this.toggleForm;
+    this.toggleForm = !this.toggleForm;
 
     this.dataService.addShoppingItem(newItem)
     .subscribe(item => {
@@ -94,10 +96,11 @@ constructor(private dataService: DataService) { }
 
   }
 
-  clearTextFields(){
-    document.getElementById("inputName").value = "";
-    document.getElementById("inputQuantity").value = "";
-  }
+  // clearTextFields(){
+  //   <HTMLInputElement>document.getElementById("inputName").value = "";
+  //   <HTMLInputElement>document.getElementById("inputQuantity").value = "";
+  // }
+
   ngOnInit(): void {
     this.getItems();
   }
