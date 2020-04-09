@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-
 const Item = require('../model/shoppingItem');
 //retreiving data from database
 router.get('/items', (req,res,next)=>{

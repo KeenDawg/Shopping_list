@@ -23,16 +23,18 @@ mongoose.connection.on('error', (err)=>{
   console.log(err);
 });
 
+//port number
 const PORT = process.env.PORT || 8080;
 
-//app adding middleware - cors
+//middleware - cors
 app.use(cors());
 
-//body parser
+//middleware- body parser
 app.use(bodyparser.json());
 
 app.use('/api',route);
 
+//setting a static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('*', (req, res) =>{
@@ -44,6 +46,7 @@ app.get('/', (req,res)=>{
   res.send('foobar');
 });
 
+//start server
 app.listen(PORT, ()=>{
   console.log("Server has been started at port: " +PORT);
 });
