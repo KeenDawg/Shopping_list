@@ -93,6 +93,11 @@ constructor(private dataService: DataService) { }
     });
 
   }
+
+  clearTextFields(){
+    document.getElementById("inputName").value = "";
+    document.getElementById("inputQuantity").value = "";
+  }
   ngOnInit(): void {
     this.getItems();
   }
