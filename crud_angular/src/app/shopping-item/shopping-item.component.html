@@ -26,7 +26,7 @@
       ngModel
       required>
   </div>
-  <button type="submit" name="button" class="btn btn-success" [disabled]= frm.invalid onclick="document.getElementById('frm').reset";>Add Item</button>
+  <button type="submit" name="button" class="btn btn-success" [disabled]= frm.invalid >Add Item</button>
 
 </form>
 
@@ -92,7 +92,7 @@
       </div>
 
       <div class="col-md">
-        <button type="button" name="deleteButton" class="btn btn-danger" (click)="deleteItem(item._id)">Delete</button>
+        <button type="button" name="deleteButton" class="btn btn-primary" (click)="deleteItem(item._id)">Delete</button>
         <br><br>
       </div>
 
