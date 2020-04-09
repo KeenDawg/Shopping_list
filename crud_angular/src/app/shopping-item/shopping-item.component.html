@@ -1,101 +1,91 @@
 <!-- Form for user input to add items to list -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
-<form #frm = "ngForm" (ngSubmit)="addItem(frm)" *ngIf ="!toggleForm">
-  <h2>Add Item</h2>
-  <div class="form-group">
-    <label for="">
-      Name:
-    </label>
-    <input
-      type="text"
-      class="form-control"
-      name="itemName"
-      value=""
-      ngModel
-      required>
-  </div>
-  <div class="form-group">
-    <label for="">
-      Quantity:
-    </label>
-    <input
-      type="number"
-      class="form-control"
-      name="itemQuantity"
-      value=""
-      ngModel
-      required>
-  </div>
-  <button type="submit" name="button" class="btn btn-success" [disabled]= frm.invalid >Add Item</button>
+<head>
+    <meta charset="utf-8">
+    <title>Shopping List Web App</title>
+</head>
 
-</form>
+<body>
+    <img src="https://cdn.giving.massgeneral.org/assets/HealthyHeart_Banner.jpg" height="50%" width="100%" alt="Image of fruits and vegetables">
 
-<!-- form to edit items -->
+    <div class="body-content">
 
-<form #editfrm = "ngForm" (ngSubmit)="editItem(editfrm)" *ngIf ="toggleForm">
-  <h2>Edit Item</h2>
-  <div class="form-group">
-    <label for="">
-      Name:
-    </label>
-    <input
-      type="text"
-      class="form-control"
-      id="inputName"
-      name="itemName"
-      value=""
-      [ngModel]="selectedItem.itemName">
-  </div>
-  <div class="form-group">
-    <label for="">
-      Quantity:
-    </label>
-    <input
-      type="number"
-      class="form-control"
-      id="inputQuantity"
-      name="itemQuantity"
-      value=""
-      [ngModel]="selectedItem.itemQuantity">
-  </div>
-  <button type="submit" name="button" class="btn btn-success" onclick="clearTextFields();">Save</button>
+        <form #frm="ngForm" (ngSubmit)="addItem(frm)" *ngIf="!toggleForm">
+            <h2>Add Item</h2>
+            <div class="form-group">
+                <label for="">
+                    Name:
+                </label>
+                <input type="text" class="form-control" name="itemName" value="" ngModel required>
+            </div>
+            <div class="form-group">
+                <label for="">
+                    Quantity:
+                </label>
+                <input type="number" class="form-control" name="itemQuantity" value="" ngModel required>
+                <br>
+                <button type="submit" name="button" class="btn btn-success" [disabled]=f rm.invalid>Add Item</button>
+            </div>
+        </form>
 
-</form>
+        <!-- form to edit items -->
 
-<h2> Shopping List</h2>
-<div class="container">
-  <div class = "row">
-    <div *ngFor="let item of shoppingItemList"class="">
+        <form #editfrm="ngForm" (ngSubmit)="editItem(editfrm)" *ngIf="toggleForm">
+            <h2>Edit Item</h2>
+            <div class="form-group">
+                <label for="">
+                    Name:
+                </label>
+                <input type="text" class="form-control" id="inputName" name="itemName" value="" [ngModel]="selectedItem.itemName">
+            </div>
+            <div class="form-group">
+                <label for="">
+                    Quantity:
+                </label>
+                <input type="number" class="form-control" id="inputQuantity" name="itemQuantity" value="" [ngModel]="selectedItem.itemQuantity">
+                <br>
+                <button type="submit" name="button" class="btn btn-success" onclick="clearTextFields();">Save</button>
+            </div>
+        </form>
 
-  <!--main page layout for user functionality-->
+        <div class="container">
+            <h2> Shopping List</h2>
+            <div class="row">
+                <div *ngFor="let item of shoppingItemList" class="">
 
-      <div class="col-md">
-        <input type="checkbox"
-        name=""
-        [checked] = "item.itemBought"
-        (click) = "updateItemCheckbox(item)"
-        >
-      </div>
+                    <!--main page layout for user functionality-->
 
-      <div class="col-md">
-        {{item.itemName}}
-      </div>
+                    <div class="col-md">
+                        <input type="checkbox" name="" [checked]="item.itemBought" (click)="updateItemCheckbox(item)">
+                    </div>
 
-      <div class="col-md">
-        {{item.itemQuantity}}
-      </div>
+                    <div class="col-md">
+                        {{item.itemName}}
+                    </div>
 
-  <!--buttons for editing and deleting selected list item(s)-->
+                    <div class="col-md">
+                        {{item.itemQuantity}}
+                    </div>
 
-      <div class="col-md">
-        <button type="button" name="editButton" class="btn btn-primary" (click)="showEditForm(item)" [disabled]="toggleForm">Edit</button>
-      </div>
+                    <!--buttons for editing and deleting selected list item(s)-->
 
-      <div class="col-md">
-        <button type="button" name="deleteButton" class="btn btn-primary" (click)="deleteItem(item._id)">Delete</button>
-        <br><br>
-      </div>
+                    <div class="col-md">
+                        <button type="button" name="editButton" class="btn btn-primary" (click)="showEditForm(item)" [disabled]="toggleForm">Edit</button>
+                    </div>
 
+                    <div class="col-md">
+                        <button type="button" name="deleteButton" class="btn btn-danger" (click)="deleteItem(item._id)">Delete</button>
+                        <br>
+                        <br>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+
+</body>
+
+</html>
