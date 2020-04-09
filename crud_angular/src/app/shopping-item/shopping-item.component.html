@@ -26,7 +26,7 @@
       ngModel
       required>
   </div>
-  <button type="submit" name="button" class="btn btn-success" [disabled]= frm.invalid>Add Item</button>
+  <button type="submit" name="button" class="btn btn-success" [disabled]= frm.invalid value="reset">Add Item</button>
 
 </form>
 
@@ -56,42 +56,44 @@
       value=""
       [ngModel]="selectedItem.itemQuantity">
   </div>
-  <button type="submit" name="button" class="btn btn-success">Save</button>
+  <button type="submit" name="button" class="btn btn-success" value="reset">Save</button>
 
 </form>
 
 <h2> Shopping List</h2>
-<div class = "row">
-  <div *ngFor="let item of shoppingItemList"class="">
+<div class="container">
+  <div class = "row">
+    <div *ngFor="let item of shoppingItemList"class="">
 
-<!--main page layout for user functionality-->
+  <!--main page layout for user functionality-->
 
-    <div class="col-md-1">
-      <input type="checkbox"
-      name=""
-      [checked] = "item.itemBought"
-      (click) = "updateItemCheckbox(item)"
-      >
+      <div class="col-md">
+        <input type="checkbox"
+        name=""
+        [checked] = "item.itemBought"
+        (click) = "updateItemCheckbox(item)"
+        >
+      </div>
+
+      <div class="col-md">
+        {{item.itemName}}
+      </div>
+
+      <div class="col-md">
+        {{item.itemQuantity}}
+      </div>
+
+  <!--buttons for editing and deleting selected list item(s)-->
+
+      <div class="col-md">
+        <button type="button" name="editButton" class="btn btn-primary" (click)="showEditForm(item)" [disabled]="toggleForm">Edit</button>
+      </div>
+
+      <div class="col-md">
+        <button type="button" name="deleteButton" class="btn btn-danger" (click)="deleteItem(item._id)">Delete</button>
+        <br><br>
+      </div>
+
     </div>
-
-    <div class="col-md-3">
-      {{item.itemName}}
-    </div>
-
-    <div class="col-md-2">
-      {{item.itemQuantity}}
-    </div>
-
-<!--buttons for editing and deleting selected list item(s)-->
-
-    <div class="col-md-3">
-      <button type="button" name="editButton" class="btn btn-primary" (click)="showEditForm(item)" [disabled]="toggleForm">Edit</button>
-    </div>
-
-    <div class="col-md-3">
-      <button type="button" name="deleteButton" class="btn btn-danger" (click)="deleteItem(item._id)">Delete</button>
-      <br><br>
-    </div>
-
   </div>
 </div>
