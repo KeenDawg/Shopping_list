@@ -26,7 +26,7 @@
       ngModel
       required>
   </div>
-  <button type="submit" name="button" class="btn btn-success" [disabled]= frm.invalid onclick="clearTextFields();">Add Item</button>
+  <button type="submit" name="button" class="btn btn-success" [disabled]= frm.invalid onclick="document.getElementById('frm').reset";>Add Item</button>
 
 </form>
 
