@@ -691,8 +691,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this = this;
 
           this.dataService.getShoppingItems().subscribe(function (items) {
-            _this.shoppingItemList = items;
-            console.log("data from dataservice: " + _this.shoppingItemList[0].itemName);
+            _this.shoppingItemList = items; //console.log("data from dataservice: " + this.shoppingItemList[0].itemName);
           });
         }
       }, {
