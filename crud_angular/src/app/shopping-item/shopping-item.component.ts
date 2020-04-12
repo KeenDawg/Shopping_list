@@ -20,7 +20,7 @@ constructor(private dataService: DataService) { }
     this.dataService.getShoppingItems()
     .subscribe(items =>{
       this.shoppingItemList = items;
-      console.log("data from dataservice: " + this.shoppingItemList[0].itemName);
+      //console.log("data from dataservice: " + this.shoppingItemList[0].itemName);
 
     });
   }
